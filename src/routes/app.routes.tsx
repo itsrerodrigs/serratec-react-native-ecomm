@@ -1,7 +1,7 @@
 import { createNativeStackNavigator, NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Home } from "../screens/home";
 import { Detalhes } from "../screens/detalhes";
-import { CadastroPorduto } from "../screens/cadastroProduto";
+import { CadastroProduto } from "../screens/cadastroProduto";
 
 export type StackNavigation = {
     Home: undefined,
@@ -30,7 +30,8 @@ export const AppRoutes = () => {
             />
             <Screen
                 name="CadastroProduto"
-                component={CadastroPorduto}
+                component={CadastroProduto}
+                options={{title: 'Cadastrar Produto'}}
             />
         </Navigator>
     )
