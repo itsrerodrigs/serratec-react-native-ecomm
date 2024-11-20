@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 
 const imagemFundo = require("../../../assets/panoFundo.png");
@@ -48,9 +50,13 @@ export const Login = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
       <ImageBackground source={imagemFundo} style={styles.imageBackground}>
         <Image source={logo} style={styles.logo} />
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
         <TextInput
           placeholderTextColor={"white"}
           style={styles.input}
@@ -79,8 +85,7 @@ export const Login = () => {
           <Text style={styles.textButton}>ENTRAR</Text>
         </TouchableOpacity>
       </ImageBackground>
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -112,7 +117,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "100%",
-    top: 60,
+    top: 65,
     height: 50,
     borderColor: "#43d3aa",
     borderWidth: 1,
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 20,
-    top: 60,
+    top: 65,
     width: "100%",
     backgroundColor: "#bdd3ce",
     borderColor: "#43d3aa",
@@ -145,5 +150,6 @@ const styles = StyleSheet.create({
   errorText: {
     color: "red",
     fontSize: 14,
+    top: 75,
   },
 });
