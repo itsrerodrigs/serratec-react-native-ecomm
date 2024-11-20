@@ -17,6 +17,7 @@ export const Home = ({ navigation }: HomeScreenProps) => {
     return (
         <>
             <Button title="Logout" onPress={signOut} />
+            <Button title="Cadastrar produto" onPress={() => navigation.navigate("CadastroProduto")} />
             <FlatListProdutos navigation={navigation} />
         </>
     );
