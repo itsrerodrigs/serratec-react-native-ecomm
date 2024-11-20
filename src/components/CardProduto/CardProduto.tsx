@@ -16,20 +16,23 @@ export const CardProduto = ({ id, imagem, nome, quantidade, valor, navigation, o
     return (
         <View style={styles.container}>
             <View style={styles.containerItem}>
-                <Image source={{ uri: imagem }} style={styles.imagem} />
+                <View style={styles.containerImagem}>
+                    <Image source={{ uri: imagem }} style={styles.imagem} />
+                </View>
+                
                 <View style={styles.details}>
-                    <Text style={styles.text}>{nome}</Text>
-                    <Text style={styles.text}>Quantidade: {quantidade}</Text>
-                    <Text style={styles.text}>R${valor}</Text>
+                    <Text style={styles.nome}>{nome}</Text>
+                    <Text style={styles.quantidade}>Quantidade: {quantidade}</Text>
+                    <Text style={styles.valor}>R${valor}</Text>
                 </View>
             </View>
 
             <View style={styles.containerIcons}>
                 <TouchableOpacity style={styles.ButtonIcon} onPress={() => navigation.navigate("Detalhes", { id: id, nome: nome })}>
-                    <FontAwesome6 name="edit" size={30} color="white" />
+                    <FontAwesome6 name="edit" size={24} color="#43d3aa" />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.ButtonIcon} onPress={onPress}>
-                    <FontAwesome6 name="trash-can" size={30} color="white" />
+                    <FontAwesome6 name="trash-can" size={24} color="#43d3aa" />
                 </TouchableOpacity>
             </View>
         </View>
@@ -44,6 +47,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: 10,
     },
+    containerImagem: {
+        width: 120,
+        height: 80,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     containerItem: {
         flexDirection: "row",
         alignItems: "center",
@@ -51,26 +60,37 @@ const styles = StyleSheet.create({
         width: "70%",
     },
     imagem: {
-        width: 120,
-        height: 120,
-        borderRadius: 12,
+        width: "95%",
+        height: "90%",
+        borderRadius: 6,
     },
     details: {
         flexDirection: "column",
         justifyContent: "flex-start",
         alignContent: "flex-start",
         marginLeft: 16,
+        gap: 4,
+    },
+    nome: {
+        color: "#cb9758",
+        fontWeight: "500",
+        fontSize: 16,
+    },
+    quantidade: {
+        color: "white",
+        fontWeight: "500",
+        fontSize: 16,
+    },
+    valor: {
+        color: "white",
+        fontSize: 18,
+        fontWeight: "500",
     },
     containerIcons: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-evenly",
         width: "30%",
-    },
-    text: {
-        fontSize: 16,
-        fontWeight: "500",
-        color: "white",
     },
     ButtonIcon: {
         marginHorizontal: 5,

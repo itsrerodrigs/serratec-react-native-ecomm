@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { HomeScreenProps } from "../../screens/home";
 
-const URL = "https://673bbe7b96b8dcd5f3f74e80.mockapi.io/api";
+export const URL = "https://673bbe7b96b8dcd5f3f74e80.mockapi.io/api";
 
-type Produto = {
+export type Produto = {
     id: string,
     imagem: string,
     nome: string,
@@ -102,7 +102,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
         </>
     );
 };
-
+// 5f2859 6b3d5b 
 const styles = StyleSheet.create({
     titulo: {
         marginVertical: 20,
@@ -112,11 +112,11 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     container: {
-        backgroundColor: "#355C7D",
+        backgroundColor: "#114552",
     },
     separator: {
         height: 2,
-        backgroundColor: 'gray',
+        backgroundColor: '#bdd3ce',
         marginHorizontal: 10,
     },
 });
