@@ -50,10 +50,7 @@ export const Login = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
+    <View style={styles.container}>
       <ImageBackground source={imagemFundo} style={styles.imageBackground}>
         <Image source={logo} style={styles.logo} />
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
@@ -85,7 +82,7 @@ export const Login = () => {
           <Text style={styles.textButton}>ENTRAR</Text>
         </TouchableOpacity>
       </ImageBackground>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
