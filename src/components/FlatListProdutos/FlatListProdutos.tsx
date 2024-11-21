@@ -1,4 +1,4 @@
-import { FlatList, View, StyleSheet, Text, ActivityIndicator, Alert } from "react-native";
+import { FlatList, View, StyleSheet, Text, ActivityIndicator, Alert, RefreshControl } from "react-native";
 import { CardProduto } from "../CardProduto/CardProduto";
 import { useEffect, useState } from "react";
 import { HomeScreenProps } from "../../screens/home";
@@ -23,6 +23,7 @@ const ItemSeparator = () => { return <View style={styles.separator} />; };
 export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
     const [produtos, setProdutos] = useState<Produto[]>([]);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
 
     const obterDados = async () => {
         setLoading(true);
@@ -33,6 +34,12 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
             console.log("Erro ao carregar produtos. ", err);
         }
         setLoading(false);
+    };
+
+    const onRefresh = async () => {
+        setRefreshing(true);
+        await obterDados();
+        setRefreshing(false);
     };
 
     const deleteProduto = async (id: string) => {
@@ -66,7 +73,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
                 ]
             );
         });
-    };    
+    };
 
     useEffect(() => {
         obterDados();
@@ -96,13 +103,19 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
                         )}
                         ItemSeparatorComponent={ItemSeparator}
                         keyExtractor={(item) => item.id}
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={refreshing}
+                                onRefresh={onRefresh}
+                            />
+                        }
                     />
                 )}
             </View>
         </>
     );
 };
-// 5f2859 6b3d5b 
+
 const styles = StyleSheet.create({
     titulo: {
         marginVertical: 20,
@@ -113,6 +126,7 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: "#114552",
+        marginBottom: 520,
     },
     separator: {
         height: 2,
@@ -120,7 +134,3 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
 });
-
-
-
-    
