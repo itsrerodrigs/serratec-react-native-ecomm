@@ -1,108 +1,155 @@
-// fazer o import da tela ex: import Login from "../screens/login"
-
 import { useContext, useState } from "react";
 import AuthContext from "../../context/auth";
-import { ImageBackground, View, Text,TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  ImageBackground,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
-const imagemFundo = "https://img.freepik.com/fotos-gratis/mulher-em-casa-usando-smartphone-na-frente-do-computador-enquanto-toma-cafe_23-2148793444.jpg?semt=ais_hybrid";
+const imagemFundo = require("../../../assets/panoFundo.png");
+const logo = require("../../../assets/transparente.png");
+
 export const Login = () => {
+  const [email, setEmail] = useState<string>("");
+  const [senha, setSenha] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  // @ts-ignore
+  const { signIn } = useContext(AuthContext);
 
-    const [email, setEmail] = useState<string>("");
-    const [senha, setSenha] = useState<string>("");
-    // @ts-ignore
-    const { signIn } = useContext(AuthContext);
+  const validarEmail = (email: string) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return regex.test(email);
+  };
+  const validarSenha = (senha: string) => {
+    return senha.length >= 6 && senha.length <= 10;
+  };
+  const logar = () => {
+    if (!validarEmail(email)) {
+      setError("Por favor, insira um email válido.");
+      return;
+    }
 
-    const logar = () => {
-        const usuario = {
-            nome: "João",
-            email: email,
-            senha: senha,
-        };
-        signIn(usuario);
+    if (!validarSenha(senha)) {
+      setError("A senha deve ter entre 6 a 10 caracteres.");
+      return;
+    }
+    setError("");
+
+    const usuario = {
+      nome: "João",
+      email: email,
+      senha: senha,
     };
+    signIn(usuario);
+  };
 
-    return (
-        <View style={styles.container}>
-            <ImageBackground source={{uri: imagemFundo}} style={styles.imageBackground}>
-                <View style={styles.signInContainer}>
-                    <Text style={styles.label}>SIGN IN 'Provisório'</Text>
-                </View>
-                <TextInput
-                    placeholderTextColor={"white"}
-                    style={styles.input}
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={(e) => {
-                        setEmail(e);
-                    }}
-                />
-                <TextInput
-                    placeholderTextColor={"white"}
-                    style={styles.input}
-                    secureTextEntry={true}
-                    placeholder="Password"
-                    value={senha}
-                    onChangeText={(e) => {
-                        setSenha(e);
-                    }}
-                />
-                <TouchableOpacity
-                    onPress={() => {
-                        logar();
-                    }}
-                    style={styles.button}
-                >
-                    <Text style={styles.textButton}>ENTRAR</Text>
-                </TouchableOpacity>
-            </ImageBackground>
-        </View>
-    );
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ImageBackground source={imagemFundo} style={styles.imageBackground}>
+        <Image source={logo} style={styles.logo} />
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
+        <TextInput
+          placeholderTextColor={"white"}
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={(e) => {
+            setEmail(e);
+          }}
+        />
+        <TextInput
+          placeholderTextColor={"white"}
+          style={styles.input}
+          secureTextEntry={true}
+          placeholder="Password"
+          value={senha}
+          onChangeText={(e) => {
+            setSenha(e);
+          }}
+        />
+        <TouchableOpacity
+          onPress={() => {
+            logar();
+          }}
+          style={styles.button}
+        >
+          <Text style={styles.textButton}>ENTRAR</Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </KeyboardAvoidingView>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    imageBackground: {
-        flex: 1,
-        gap: 30,
-        alignItems: "center",
-        paddingVertical: 20,
-        paddingHorizontal: 10,
-        justifyContent: "center",
-        backgroundColor: "black"
-    },
-    signInContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginTop: 24,
-    },
-    input: {
-        width: "100%",
-        height: 50,
-        borderColor: "#ddd",
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 10,
-        color: "#fbfbfb",
-        backgroundColor: "#e7e7e746",
-    },
-    button: {
-        padding: 20,
-        width: "100%",
-        backgroundColor: "#e7e7e7",
-        alignItems: "center",
-        borderRadius: 5,
-    },
-    textButton: {
-        color: "black",
-        fontSize: 16,
-        fontWeight: "bold",
-    },
-    label: {
-        flex: 1,
-        fontSize: 26,
-        color: "white",
-        fontWeight: "bold",
-    },
+  container: {
+    flex: 1,
+  },
+  imageBackground: {
+    flex: 1,
+    gap: 20,
+    alignItems: "center",
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    justifyContent: "center",
+    backgroundColor: "black",
+  },
+  logo: {
+    position: "absolute",
+    top: 10,
+    width: 250,
+    height: 250,
+    zIndex: 1,
+  },
+
+  signInContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 24,
+  },
+  input: {
+    width: "100%",
+    top: 65,
+    height: 50,
+    borderColor: "#43d3aa",
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    color: "#041515",
+    backgroundColor: "#e7e7e746",
+  },
+  button: {
+    padding: 20,
+    top: 65,
+    width: "100%",
+    backgroundColor: "#bdd3ce",
+    borderColor: "#43d3aa",
+    borderWidth: 1,
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  textButton: {
+    color: "black",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  label: {
+    flex: 1,
+    fontSize: 26,
+    color: "white",
+    fontWeight: "bold",
+  },
+  errorText: {
+    color: "red",
+    fontSize: 14,
+    top: 75,
+  },
 });

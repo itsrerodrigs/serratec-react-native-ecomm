@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export const Navbar: React.FC = () => {
   return (
@@ -14,6 +15,9 @@ export const Navbar: React.FC = () => {
       <TouchableOpacity>
         <Text style={styles.navItem}>Equipe</Text>
       </TouchableOpacity>
+      <TouchableOpacity>
+        <MaterialCommunityIcons name="logout" size={24} color="white" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#1E90FF',
+    backgroundColor: '#43d3aa',
     padding: 15,
     borderTopWidth: 1,
     borderTopColor: '#ddd',

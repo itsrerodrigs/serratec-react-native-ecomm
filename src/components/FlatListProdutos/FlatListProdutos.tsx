@@ -1,12 +1,12 @@
 import { FlatList, View, StyleSheet, Text, ActivityIndicator, Alert } from "react-native";
 import { CardProduto } from "../CardProduto/CardProduto";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { HomeScreenProps } from "../../screens/home";
+import { api1 } from "../../services/api";
 
-const URL = "https://673bbe7b96b8dcd5f3f74e80.mockapi.io/api";
+export const URL = "https://673bbe7b96b8dcd5f3f74e80.mockapi.io/api";
 
-type Produto = {
+export type Produto = {
     id: string,
     imagem: string,
     nome: string,
@@ -27,7 +27,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
     const obterDados = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.get(`${URL}/produtos`);
+            const { data } = await api1.get(`${URL}/produtos`);
             setProdutos(data);
         } catch (err) {
             console.log("Erro ao carregar produtos. ", err);
@@ -41,7 +41,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
             return;
         }
         try {
-            const { data } = await axios.delete(`${URL}/produtos/${id}`);
+            const { data } = await api1.delete(`${URL}/produtos/${id}`);
             const newList = produtos.filter((item) => item.id !== data.id);
             setProdutos(newList);
         } catch (err) {
@@ -102,7 +102,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
         </>
     );
 };
-
+// 5f2859 6b3d5b 
 const styles = StyleSheet.create({
     titulo: {
         marginVertical: 20,
@@ -112,11 +112,11 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     container: {
-        backgroundColor: "#355C7D",
+        backgroundColor: "#114552",
     },
     separator: {
         height: 2,
-        backgroundColor: 'gray',
+        backgroundColor: '#bdd3ce',
         marginHorizontal: 10,
     },
 });
