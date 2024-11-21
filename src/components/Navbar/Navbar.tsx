@@ -2,20 +2,29 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useAuth } from '../../context/auth';
+import { HomeScreenProps } from '../../screens/home';
 
-export const Navbar: React.FC = () => {
+type NavbarProps = {
+  navigation: HomeScreenProps['navigation'];
+};
+
+export const Navbar = ({ navigation }: NavbarProps) => {
+
+  const { signOut } = useAuth();
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Feather name="home" size={24} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity>
+      
+      <TouchableOpacity style={styles.containerIcon}>
+        <Feather name="home" size={24} color="white" onPress={() => navigation.navigate("Home")}/>
         <Text style={styles.navItem}>Produtos</Text>
       </TouchableOpacity>
+      
       <TouchableOpacity>
         <Text style={styles.navItem}>Equipe</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={signOut}>
         <MaterialCommunityIcons name="logout" size={24} color="white" />
       </TouchableOpacity>
     </View>
@@ -23,12 +32,15 @@ export const Navbar: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  containerIcon: {
+    alignItems: "center"
+  },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#43d3aa',
-    padding: 15,
+    padding: 30,
     borderTopWidth: 1,
     borderTopColor: '#ddd',
     position: 'absolute',

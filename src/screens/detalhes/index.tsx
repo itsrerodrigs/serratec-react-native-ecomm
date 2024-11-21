@@ -4,6 +4,8 @@ import { useAuth } from "../../context/auth";
 import { DetalhesProps, StackNavigation } from "../../routes/app.routes";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { CardDetalhes } from "../../components/CardDetalhes/CardDetalhes";
+import { Navbar } from "../../components/Navbar/Navbar";
+import { HomeScreenProps } from "../home";
 
 export type DetalhesScreenProps = {
     navigation: DetalhesProps,
@@ -12,7 +14,7 @@ export type DetalhesScreenProps = {
 
 type DetalhesScreenRouteProp = RouteProp<StackNavigation, "Detalhes">
 
-export const Detalhes = () => {
+export const Detalhes = ({ navigation }: HomeScreenProps) => {
 
     const { signOut } = useAuth();
     const route = useRoute<DetalhesScreenRouteProp>();
@@ -22,6 +24,7 @@ export const Detalhes = () => {
         <>
             <Button title="Logout" onPress={signOut} />
             <CardDetalhes id={id}/>
+            <Navbar navigation={navigation}/>
         </>
     );
 };
