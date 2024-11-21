@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#43d3aa',
-    padding: 30,
+    padding: 15,
     borderTopWidth: 1,
     borderTopColor: '#ddd',
     position: 'absolute',

@@ -77,7 +77,11 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
 
     useEffect(() => {
         obterDados();
-    }, []);
+        const unsubscribe = navigation.addListener("focus", () => {
+            obterDados();
+          });
+          return unsubscribe;
+    }, [navigation]);
 
     return (
         <>
