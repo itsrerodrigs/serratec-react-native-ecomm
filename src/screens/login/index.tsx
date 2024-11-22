@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
-  Platform,
+  Dimensions,
 } from "react-native";
 
 const imagemFundo = require("../../../assets/panoFundo.png");
 const logo = require("../../../assets/transparente.png");
+const { width } = Dimensions.get("window");
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -55,19 +55,19 @@ export const Login = () => {
         <Image source={logo} style={styles.logo} />
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
         <TextInput
-          placeholderTextColor={"white"}
+          placeholderTextColor={"#bdd3ce"}
           style={styles.input}
-          placeholder="Email"
+          placeholder="Digite seu email"
           value={email}
           onChangeText={(e) => {
             setEmail(e);
           }}
         />
         <TextInput
-          placeholderTextColor={"white"}
+          placeholderTextColor={"#bdd3ce"}
           style={styles.input}
           secureTextEntry={true}
-          placeholder="Password"
+          placeholder="Digite sua senha"
           value={senha}
           onChangeText={(e) => {
             setSenha(e);
@@ -97,13 +97,12 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
     justifyContent: "center",
-    backgroundColor: "black",
   },
   logo: {
     position: "absolute",
     top: 10,
-    width: 250,
-    height: 250,
+    width: width * 0.6,
+    height: width * 0.6,
     zIndex: 1,
   },
 
@@ -111,6 +110,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 24,
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   input: {
     width: "100%",
@@ -120,8 +121,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
-    color: "#041515",
+    color: "#bdd3ce",
     backgroundColor: "#e7e7e746",
+    marginVertical: 10,
   },
   button: {
     padding: 20,
@@ -132,21 +134,26 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: "center",
     borderRadius: 5,
+    marginVertical: 10,
   },
   textButton: {
-    color: "black",
+    color: "#114552",
     fontSize: 16,
     fontWeight: "bold",
   },
   label: {
     flex: 1,
-    fontSize: 26,
+    fontSize: width * 0.08,
     color: "white",
     fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
   },
   errorText: {
-    color: "red",
+    backgroundColor: "red",
+    borderRadius: 3,
+    color: "#bdd3ce",
     fontSize: 14,
-    top: 75,
+    top: 91,
   },
 });
