@@ -28,8 +28,6 @@ export const Home = ({ navigation }: HomeScreenProps) => {
                 <FlatListProdutos navigation={navigation} />
                 
             </View>
-
-            <Navbar navigation={navigation}/>
         </>
     );
 };

@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: "#114552",
-        marginBottom: 520,
+        marginBottom: 350,
     },
     separator: {
         height: 2,
