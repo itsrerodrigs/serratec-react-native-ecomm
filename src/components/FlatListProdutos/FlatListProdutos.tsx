@@ -3,6 +3,7 @@ import { CardProduto } from "../CardProduto/CardProduto";
 import { useEffect, useState } from "react";
 import { HomeScreenProps } from "../../screens/home";
 import { api1 } from "../../services/api";
+import { Filtro } from "../Filtro/Filtro";
 
 export type Produto = {
     id: string,
@@ -83,6 +84,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
 
     return (
         <>
+            <Filtro/>
             <Text style={styles.titulo}>Produtos</Text>
             <View style={styles.container}>
                 {loading ? (
