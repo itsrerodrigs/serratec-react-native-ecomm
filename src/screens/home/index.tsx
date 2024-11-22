@@ -13,47 +13,47 @@ export type HomeScreenProps = {
 
 export const Home = ({ navigation }: HomeScreenProps) => {
 
-    const { signOut } = useAuth();
-
     return (
         <>
             <View style={styles.container}>
-                <Button title="Logout" onPress={signOut} />
                 <View style={styles.containerMenu}>
                     <TouchableOpacity style={styles.botaoCadastrar} onPress={() => navigation.navigate("CadastroProduto")}>  
                         <Text style={styles.textBotaoCadastrar}>Cadastrar novo produto</Text>
-                    </TouchableOpacity> 
+                    </TouchableOpacity>
                 </View>
                 
                 <FlatListProdutos navigation={navigation} />
                 
             </View>
-
-            <Navbar navigation={navigation}/>
         </>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        gap: 15,
+        flex: 1,
+        alignItems: "center",
     },
     containerMenu: {
-        width: "40%",
+        width: "100%",
         justifyContent: "center",
         alignItems: "center",
-       
+        flexDirection: "row",
+        gap: 20,
     },
     botaoCadastrar: {
-        padding: 20,
-        width: "100%",
-        backgroundColor: "#bdd3ce",
-        borderColor: "#43d3aa",
-        borderWidth: 1,
+        padding: 4, 
+        width: "100%", 
+        backgroundColor: "#43d3aa", 
+        borderColor: "gray", 
+        borderWidth: 1, 
         alignItems: "center",
-        borderRadius: 5,
+        elevation: 5
     }, 
     textBotaoCadastrar: {
         textAlign: "center",
-    }
+        color: "#fff",
+        fontSize: 12,
+        fontWeight: "bold",
+    },
 })

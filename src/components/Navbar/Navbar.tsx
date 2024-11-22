@@ -4,6 +4,7 @@ import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useAuth } from '../../context/auth';
 import { HomeScreenProps } from '../../screens/home';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 type NavbarProps = {
   navigation: HomeScreenProps['navigation'];
@@ -15,17 +16,17 @@ export const Navbar = ({ navigation }: NavbarProps) => {
 
   return (
     <View style={styles.container}>
-      
       <TouchableOpacity style={styles.containerIcon}>
-        <Feather name="home" size={24} color="white" onPress={() => navigation.navigate("Home")}/>
+        <Feather name="home" size={24} color="white" onPress={() => navigation.navigate("HomeStack")}/>
         <Text style={styles.navItem}>Produtos</Text>
       </TouchableOpacity>
-      
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.containerIcon}>
+        <AntDesign name="team" size={24} color="white" />
         <Text style={styles.navItem}>Equipe</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={signOut}>
+      <TouchableOpacity style={styles.containerIcon} onPress={signOut}>
         <MaterialCommunityIcons name="logout" size={24} color="white" />
+        <Text style={styles.navItem}>Logout</Text>
       </TouchableOpacity>
     </View>
   );
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#43d3aa',
-    padding: 30,
+    padding: 15,
     borderTopWidth: 1,
     borderTopColor: '#ddd',
     position: 'absolute',
