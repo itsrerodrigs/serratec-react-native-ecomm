@@ -4,6 +4,7 @@ import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useAuth } from '../../context/auth';
 import { HomeScreenProps } from '../../screens/home';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 type NavbarProps = {
   navigation: HomeScreenProps['navigation'];
@@ -15,17 +16,17 @@ export const Navbar = ({ navigation }: NavbarProps) => {
 
   return (
     <View style={styles.container}>
-      
       <TouchableOpacity style={styles.containerIcon}>
         <Feather name="home" size={24} color="white" onPress={() => navigation.navigate("Home")}/>
         <Text style={styles.navItem}>Produtos</Text>
       </TouchableOpacity>
-      
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.containerIcon}>
+        <AntDesign name="team" size={24} color="white" />
         <Text style={styles.navItem}>Equipe</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={signOut}>
+      <TouchableOpacity style={styles.containerIcon} onPress={signOut}>
         <MaterialCommunityIcons name="logout" size={24} color="white" />
+        <Text style={styles.navItem}>Logout</Text>
       </TouchableOpacity>
     </View>
   );
