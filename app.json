@@ -4,10 +4,13 @@
     "slug": "projeto-ecom",
     "version": "1.0.0",
     "orientation": "portrait",
-  
+    "icon": "./assets/transparente.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true
-   
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/transparente.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#114552"
     },
     "ios": {
       "supportsTablet": true
@@ -22,4 +25,4 @@
       "favicon": "./assets/favicon.png"
     }
   }
-
+}
