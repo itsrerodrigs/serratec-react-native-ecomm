@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { HomeScreenProps } from "../../screens/home";
 import { api1 } from "../../services/api";
 
-export const URL = "https://673bbe7b96b8dcd5f3f74e80.mockapi.io/api";
-
 export type Produto = {
     id: string,
     imagem: string,
@@ -28,7 +26,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
     const obterDados = async () => {
         setLoading(true);
         try {
-            const { data } = await api1.get(`${URL}/produtos`);
+            const { data } = await api1.get(`/produtos`);
             setProdutos(data);
         } catch (err) {
             console.log("Erro ao carregar produtos. ", err);
@@ -48,7 +46,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
             return;
         }
         try {
-            const { data } = await api1.delete(`${URL}/produtos/${id}`);
+            const { data } = await api1.delete(`/produtos/${id}`);
             const newList = produtos.filter((item) => item.id !== data.id);
             setProdutos(newList);
         } catch (err) {
@@ -113,6 +111,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
                                 onRefresh={onRefresh}
                             />
                         }
+                        contentContainerStyle={styles.flatListContent}
                     />
                 )}
             </View>
@@ -122,19 +121,25 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
 
 const styles = StyleSheet.create({
     titulo: {
-        marginVertical: 20,
-        marginHorizontal: 10,
-        fontSize: 18,
+        fontSize: 26,
         textAlign: "center",
-        fontWeight: "500",
+        fontWeight: "600",
+        color: "#cb9758",
+        padding: 6,
     },
     container: {
-        backgroundColor: "#114552",
-        marginBottom: 350,
+        backgroundColor: "#1c2833",
+        marginBottom: 60,
+        width: "100%",
     },
     separator: {
         height: 2,
         backgroundColor: '#bdd3ce',
         marginHorizontal: 10,
     },
+    flatListContent: {
+        paddingBottom: 150,
+    },
 });
+
+// 114552

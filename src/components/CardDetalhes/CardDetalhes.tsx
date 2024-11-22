@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Produto, URL } from "../FlatListProdutos/FlatListProdutos";
+import { Produto } from "../FlatListProdutos/FlatListProdutos";
 import { Image, View, StyleSheet, Text, ActivityIndicator, TextInput, TouchableOpacity, Alert } from "react-native";
 import { api1 } from "../../services/api";
 
@@ -18,7 +18,7 @@ export const CardDetalhes = ({ id }: CardDetalhesProps) => {
 
     const obterProduto = async () => {
         try {
-            const { data } = await api1.get(`${URL}/produtos/${id}`);
+            const { data } = await api1.get(`/produtos/${id}`);
             setProduto(data);
             
             setNome(data.nome);

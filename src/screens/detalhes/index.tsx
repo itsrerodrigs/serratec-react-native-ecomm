@@ -1,11 +1,9 @@
 import React from "react";
-import { Button } from "react-native";
+import { Button, FlatList } from "react-native";
 import { useAuth } from "../../context/auth";
 import { DetalhesProps, StackNavigation } from "../../routes/app.routes";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { CardDetalhes } from "../../components/CardDetalhes/CardDetalhes";
-import { Navbar } from "../../components/Navbar/Navbar";
-import { HomeScreenProps } from "../home";
 
 export type DetalhesScreenProps = {
     navigation: DetalhesProps,
@@ -14,17 +12,24 @@ export type DetalhesScreenProps = {
 
 type DetalhesScreenRouteProp = RouteProp<StackNavigation, "Detalhes">
 
-export const Detalhes = ({ navigation }: HomeScreenProps) => {
+export const Detalhes = () => {
 
-    const { signOut } = useAuth();
     const route = useRoute<DetalhesScreenRouteProp>();
     const { id } = route.params;
 
+    const DATA = [
+       { id: "1",
+        componente: <CardDetalhes id={id}/>}
+    ]
+
     return (
         <>
-            <Button title="Logout" onPress={signOut} />
-            <CardDetalhes id={id}/>
-            <Navbar navigation={navigation}/>
+            <FlatList
+                data={DATA}
+                renderItem={({ item }) => item.componente}
+                keyExtractor={item => item.id}
+            />
+            
         </>
     );
 };

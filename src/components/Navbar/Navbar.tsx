@@ -17,7 +17,7 @@ export const Navbar = ({ navigation }: NavbarProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.containerIcon}>
-        <Feather name="home" size={24} color="white" onPress={() => navigation.navigate("Home")}/>
+        <Feather name="home" size={24} color="white" onPress={() => navigation.navigate("HomeStack")}/>
         <Text style={styles.navItem}>Produtos</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.containerIcon}>
