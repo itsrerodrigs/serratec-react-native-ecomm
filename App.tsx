@@ -3,6 +3,8 @@ import { AuthProvider } from "./src/context/auth";
 import { Routes } from "./src/routes";
 import { SplashScreen } from "./src/screens/SplashScreen/SplashScreen";
 import { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import NetworkStatus from "./src/components/NetworkInfo/NetWorkInfo";
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -17,6 +19,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <SafeAreaView>
+        <NetworkStatus/>
+      </SafeAreaView>
       <AuthProvider>
         <Routes />
       </AuthProvider>

@@ -44,7 +44,7 @@ export const CardDetalhes = ({ id }: CardDetalhesProps) => {
         };
 
         try {
-            const response = await api1.put(`${URL}/produtos/${id}`, novoProduto);
+            const response = await api1.put(`/produtos/${id}`, novoProduto);
             Alert.alert('Sucesso', 'Produto atualizado com sucesso!');
             setProduto(response.data);
         } catch (err) {
