@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet, Alert } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Button } from "react-native";
 import { useAuth } from "../../context/auth";
 import { CadastroProdutoProps, StackNavigation } from "../../routes/app.routes";
 import { RouteProp } from "@react-navigation/native";
@@ -77,7 +77,9 @@ export const CadastroProduto = () => {
         keyboardType="numeric"
         style={styles.input}
       />
-      <Button title="Enviar" color="#43d3aa" onPress={criarProduto} />
+      <TouchableOpacity onPress={criarProduto} style={styles.button}>
+        <Text style={styles.buttonText}>Enviar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -104,8 +106,16 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingHorizontal: 8,
   },
-  buttonContainer: {
+  button: {
     marginTop: 20,
+    backgroundColor: "#43d3aa",
+    padding: 10,
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
   },
   inputSpacing: {
     height: 40,

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import { useAuth } from '../../context/auth';
-import { Ionicons } from '@expo/vector-icons';
 
 export const Perfil = () => {
     const { signOut } = useAuth();
@@ -26,51 +25,51 @@ export const Perfil = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => console.log('Back pressed')}>
-                    <Ionicons name="arrow-back" size={24} color="black" />
-                </TouchableOpacity>
-                <Button title="Save" onPress={handleSave} color="#43d3aa" />
-            </View>
-            <View style={styles.profileImageContainer}>
-                <TouchableOpacity onPress={() => console.log('Profile image pressed')}>
-                    <Image
-                        source={{ uri: 'https://via.placeholder.com/150' }}
-                        style={styles.profileImage}
-                    />
-                </TouchableOpacity>
-            </View>
-            <TextInput
-                placeholder="Nome"
-                value={nome}
-                onChangeText={setNome}
-                style={styles.input}
+    <View style={styles.salvarButtonContainer}>
+        <TouchableOpacity onPress={handleSave} style={styles.salvarButton}>
+            <Text style={styles.salvarButtonText}>Salvar</Text>
+        </TouchableOpacity>
+    </View>
+    <View style={styles.profileImageContainer}>
+        <TouchableOpacity onPress={() => console.log('Profile image pressed')}>
+            <Image
+                source={{ uri: 'https://via.placeholder.com/150' }}
+                style={styles.profileImage}
             />
-            <TextInput
-                placeholder="E-mail"
-                value={email}
-                onChangeText={setEmail}
-                style={styles.input}
-            />
-            <Text style={styles.changePasswordText}>Deseja alterar senha?</Text>
-            <TextInput
-                placeholder="Nova senha"
-                value={novaSenha}
-                onChangeText={setNovaSenha}
-                secureTextEntry
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Confirmar senha"
-                value={confirmarSenha}
-                onChangeText={setConfirmarSenha}
-                secureTextEntry
-                style={styles.input}
-            />
-            <View style={styles.buttonContainer}>
-                <Button title="Alterar senha" onPress={handleChangePassword} color="#43d3aa" />
-            </View>
-        </View>
+        </TouchableOpacity>
+    </View>
+    <TextInput
+        placeholder="Nome"
+        value={nome}
+        onChangeText={setNome}
+        style={styles.input}
+    />
+    <TextInput
+        placeholder="E-mail"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.input}
+    />
+    <Text style={styles.changePasswordText}>Deseja alterar senha?</Text>
+    <TextInput
+        placeholder="Nova senha"
+        value={novaSenha}
+        onChangeText={setNovaSenha}
+        secureTextEntry
+        style={styles.input}
+    />
+    <TextInput
+        placeholder="Confirmar senha"
+        value={confirmarSenha}
+        onChangeText={setConfirmarSenha}
+        secureTextEntry
+        style={styles.input}
+    />
+    <View style={styles.buttonContainer}>
+        <Button title="Alterar senha" onPress={handleChangePassword} color="#43d3aa" />
+    </View>
+</View>
+
     );
 };
 
@@ -80,11 +79,19 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: '#fff',
     },
-    header: {
+    salvarButtonContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        justifyContent: 'flex-end',
         marginBottom: 20,
+    },
+    salvarButton: {
+        backgroundColor: '#43d3aa',
+        padding: 10,
+        borderRadius: 5,
+    },
+    salvarButtonText: {
+        color: '#fff',
+        fontSize: 16,
     },
     profileImageContainer: {
         alignItems: 'center',
