@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface AuthContextData {
   signed: boolean;
@@ -7,20 +8,33 @@ interface AuthContextData {
   signOut(): void;
 }
 
-const AuthContext = createContext<AuthContextData | undefined>(undefined);
+export const AuthContext = createContext<AuthContextData | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<any>(undefined);
   const [signed, setSigned] = useState<any>(false); 
 
+  useEffect(() => {
+    const loadStorageData = async () => {
+      const storageUser: any = await AsyncStorage.getItem("@Usuario:user");
+      if (storageUser) {
+        setUser(JSON.parse(storageUser));
+        setSigned(true);
+      }
+    };
+    loadStorageData();
+  }, [])
+
   const signIn = async (usuario: any) => {
+    await AsyncStorage.setItem("@Usuario:user", JSON.stringify(usuario));
     setUser(usuario); 
     setSigned(true); 
 
     return Promise.resolve();
   };
 
-  const signOut = () => {
+  const signOut = async () => {
+    await AsyncStorage.clear();
     setUser(undefined);
     setSigned(false);
   }
@@ -38,8 +52,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
-
-export default AuthContext;
 
 export const useAuth = () => {
     const context = useContext(AuthContext);

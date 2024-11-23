@@ -4,7 +4,7 @@ import { View, StyleSheet, Animated } from "react-native";
 type SplashScreenProps = {
   onFinish: () => void;
 };
-export const SplashScreen = ({ onFinish }: SplashScreenProps) => {
+export const SplashScreenComponent = ({ onFinish }: SplashScreenProps) => {
   const fadeAnim = new Animated.Value(0);
 
   useEffect(() => {

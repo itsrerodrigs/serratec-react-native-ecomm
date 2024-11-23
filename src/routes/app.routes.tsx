@@ -1,12 +1,11 @@
-import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from '@expo/vector-icons';
-import { Home, HomeScreenProps } from "../screens/home";
+import { Home } from "../screens/home";
 import { Detalhes } from "../screens/detalhes";
 import { CadastroProduto } from "../screens/cadastroProduto";
 import { Perfil } from "../screens/perfil";
-import { Text, TouchableOpacity, StyleSheet, View, Button, Alert } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 import { useAuth } from "../context/auth";
 
 export type StackNavigation = {
