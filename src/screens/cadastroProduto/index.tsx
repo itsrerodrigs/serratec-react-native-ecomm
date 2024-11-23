@@ -1,9 +1,24 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Button } from "react-native";
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  Alert,
+  ImageBackground,
+  TouchableOpacity,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Image,
+} from "react-native";
 import { useAuth } from "../../context/auth";
 import { CadastroProdutoProps, StackNavigation } from "../../routes/app.routes";
 import { RouteProp } from "@react-navigation/native";
 import { api1 } from "../../services/api";
+
+const logo = require("../../../assets/transparente.png");
 
 export type CadastroProdutoScreenProps = {
   navigation: CadastroProdutoProps;
@@ -48,76 +63,107 @@ export const CadastroProduto = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Button title="Logout" onPress={signOut} color="#43d3aa" />
-      <View style={styles.inputSpacing} />
-      <TextInput
-        placeholder="Imagem"
-        value={imagem}
-        onChangeText={setImagem}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Nome do Produto"
-        value={nome}
-        onChangeText={setNome}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Quantidade"
-        value={quantidade}
-        onChangeText={setQuantidade}
-        keyboardType="numeric"
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Valor"
-        value={valor}
-        onChangeText={setValor}
-        keyboardType="numeric"
-        style={styles.input}
-      />
-      <TouchableOpacity onPress={criarProduto} style={styles.button}>
-        <Text style={styles.buttonText}>Enviar</Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.avoidingView}
+    >
+      <View style={styles.backgroundContainer}>
+        <ScrollView
+          contentContainerStyle={styles.scrollView}
+          keyboardShouldPersistTaps="handled"
+        >
+          <Image source={logo} style={styles.logo} />
+          <View style={styles.inner}>
+            <TextInput
+              placeholder="Imagem"
+              placeholderTextColor={"#bdd3ce"}
+              value={imagem}
+              onChangeText={setImagem}
+              style={[styles.input, styles.inputTextColor]}
+            />
+            <TextInput
+              placeholder="Nome do Produto"
+              placeholderTextColor={"#bdd3ce"}
+              value={nome}
+              onChangeText={setNome}
+              style={[styles.input, styles.inputTextColor]}
+            />
+            <TextInput
+              placeholder="Quantidade"
+              placeholderTextColor={"#bdd3ce"}
+              value={quantidade}
+              onChangeText={setQuantidade}
+              keyboardType="numeric"
+              style={[styles.input, styles.inputTextColor]}
+            />
+            <TextInput
+              placeholder="Valor"
+              placeholderTextColor={"#bdd3ce"}
+              value={valor}
+              onChangeText={setValor}
+              keyboardType="numeric"
+              style={[styles.input, styles.inputTextColor]}
+            />
+            <TouchableOpacity onPress={criarProduto} style={styles.button}>
+              <Text style={styles.textButton}>ENVIAR</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  avoidingView: {
     flex: 1,
-    padding: 16,
-    backgroundColor: "#fff",
   },
-  imagePicker: {
-    alignItems: "center",
-    marginVertical: 30,
+  backgroundContainer: {
+    backgroundColor: "#114552",
+    flex: 1,
+    resizeMode: "cover",
   },
-  imagem: {
+  logo: {
     width: 200,
     height: 200,
-    marginTop: 8,
+    alignSelf: "center",
+  },
+  scrollView: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 20,
+  },
+  inner: {
+    width: "100%",
+    alignItems: "center",
+    padding: 20,
   },
   input: {
-    height: 40,
-    borderColor: "#bdd4cf",
+    width: "95%",
+    height: 50,
+    borderColor: "##43d3aa",
     borderWidth: 1,
-    marginBottom: 12,
+    borderRadius: 5,
+    backgroundColor: "#e7e7e746",
+    marginBottom: 10,
     paddingHorizontal: 8,
   },
+  inputTextColor: {
+    color: "#bdd3ce",
+  },
   button: {
-    marginTop: 20,
-    backgroundColor: "#43d3aa",
-    padding: 10,
+    width: "95%",
+    height: 50,
+    backgroundColor: "#bdd3ce",
+    borderColor: "#43d3aa",
+    borderWidth: 1,
+    justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
   },
-  buttonText: {
-    color: "#fff",
+  textButton: {
+    color: "#114552",
     fontSize: 16,
-  },
-  inputSpacing: {
-    height: 40,
   },
 });

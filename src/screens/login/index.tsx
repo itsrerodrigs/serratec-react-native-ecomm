@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
-  Dimensions,
   Alert,
   Image,
   KeyboardAvoidingView,
@@ -17,7 +16,6 @@ import {
 import UsuarioService from "../../services/UsuarioService";
 import { Controller, useForm } from "react-hook-form";
 
-const { width } = Dimensions.get("window");
 const logo = require("../../../assets/transparente.png");
 
 export const Login = () => {
@@ -42,26 +40,37 @@ export const Login = () => {
       setLoading(false);
     }
   };
-//style={styles.container}
+  //style={styles.container}
   return (
     <KeyboardAvoidingView
-    behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
-      <ImageBackground style={styles.imageBackground} source={require("../../../assets/panoFundo.png")}>
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require("../../../assets/panoFundo.png")}
+      >
         <Image source={logo} style={styles.logo} />
-        
+
         {errors.senha && (
-          <Text style={{ color: "#bdd3ce", backgroundColor: "red", padding: 4 }}>Senha é obrigatória.</Text>
+          <Text
+            style={{ color: "#bdd3ce", backgroundColor: "red", padding: 4 }}
+          >
+            Senha é obrigatória.
+          </Text>
         )}
         {errors.email && (
-          <Text style={{ color: "#bdd3ce", backgroundColor: "red", padding: 4 }}>E-mail é obrigatório.</Text>
+          <Text
+            style={{ color: "#bdd3ce", backgroundColor: "red", padding: 4 }}
+          >
+            E-mail é obrigatório.
+          </Text>
         )}
-        
+
         <View style={styles.signInContainer}>
           <Text style={styles.label}>LOGIN</Text>
         </View>
-        
+
         <Controller
           control={control}
           name="email"
@@ -83,7 +92,6 @@ export const Login = () => {
             />
           )}
         />
-        
 
         <Controller
           control={control}
@@ -105,7 +113,6 @@ export const Login = () => {
             />
           )}
         />
-        
 
         <TouchableOpacity
           disabled={loading}
@@ -153,16 +160,16 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     borderWidth: 1,
     borderRadius: 5,
-    padding: 10, 
+    padding: 10,
     color: "#fbfbfb",
     backgroundColor: "#e7e7e746",
   },
   button: {
-    padding: 20, 
+    padding: 20,
     width: "100%",
     backgroundColor: "#e7e7e7",
     alignItems: "center",
-    borderRadius: 5, 
+    borderRadius: 5,
   },
   textButton: {
     color: "black",

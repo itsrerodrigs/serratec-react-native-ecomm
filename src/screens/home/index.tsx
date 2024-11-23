@@ -8,52 +8,54 @@ import { Detalhes } from "../detalhes";
 import { Navbar } from "../../components/Navbar/Navbar";
 
 export type HomeScreenProps = {
-    navigation: HomeProps,
-}
+  navigation: HomeProps;
+};
 
 export const Home = ({ navigation }: HomeScreenProps) => {
+  return (
+    <>
+      <View style={styles.container}>
+        <View style={styles.containerMenu}>
+          <TouchableOpacity
+            style={styles.botaoCadastrar}
+            onPress={() => navigation.navigate("CadastroProduto")}
+          >
+            <Text style={styles.textBotaoCadastrar}>NOVO PRODUTO</Text>
+          </TouchableOpacity>
+        </View>
 
-    return (
-        <>
-            <View style={styles.container}>
-                <View style={styles.containerMenu}>
-                    <TouchableOpacity style={styles.botaoCadastrar} onPress={() => navigation.navigate("CadastroProduto")}>  
-                        <Text style={styles.textBotaoCadastrar}>Cadastrar novo produto</Text>
-                    </TouchableOpacity>
-                </View>
-                
-                <FlatListProdutos navigation={navigation} />
-                
-            </View>
-        </>
-    );
+        <FlatListProdutos navigation={navigation} />
+      </View>
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-    },
-    containerMenu: {
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "row",
-        gap: 20,
-    },
-    botaoCadastrar: {
-        padding: 4, 
-        width: "100%", 
-        backgroundColor: "#43d3aa", 
-        borderColor: "gray", 
-        borderWidth: 1, 
-        alignItems: "center",
-        elevation: 5
-    }, 
-    textBotaoCadastrar: {
-        textAlign: "center",
-        color: "#fff",
-        fontSize: 12,
-        fontWeight: "bold",
-    },
-})
+  container: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "#114552",
+  },
+  containerMenu: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 20,
+  },
+  botaoCadastrar: {
+    padding: 15,
+    width: "100%",
+    backgroundColor: "#e7e7e746",
+    borderColor: "gray",
+    borderWidth: 1,
+    alignItems: "center",
+    elevation: 5,
+  },
+  textBotaoCadastrar: {
+    textAlign: "center",
+    color: "#bdd4cf",
+    fontSize: 12,
+    fontWeight: "bold",
+  },
+});
