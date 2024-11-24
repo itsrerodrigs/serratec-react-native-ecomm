@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   container: {
-    backgroundColor: "#e7e7e746",
     marginBottom: 60,
     width: "100%",
   },
