@@ -9,6 +9,9 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
 } from "react-native";
 import { api1 } from "../../services/api";
 
@@ -79,37 +82,42 @@ export const CardDetalhes = ({ id }: CardDetalhesProps) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.nome}>{produto.nome}</Text>
-      <Image style={styles.imagem} source={{ uri: produto.imagem }} />
-      <View style={styles.containerForm}>
-        <Text style={styles.textLabel}>Produto:</Text>
-        <TextInput style={styles.input} value={nome} onChangeText={setNome} />
-        <Text style={styles.textLabel}>Imagem:</Text>
-        <TextInput
-          style={styles.input}
-          value={imagem}
-          onChangeText={setImagem}
-        />
-        <Text style={styles.textLabel}>Quantidade:</Text>
-        <TextInput
-          style={styles.input}
-          value={quantidade}
-          onChangeText={setQuantidade}
-          keyboardType="numeric"
-        />
-        <Text style={styles.textLabel}>Valor:</Text>
-        <TextInput
-          style={styles.input}
-          value={valor}
-          onChangeText={setValor}
-          keyboardType="numeric"
-        />
-      </View>
-      <TouchableOpacity style={styles.botaoEnviar} onPress={salvarAlteracoes}>
-        <Text>SALVAR</Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.nome}>{produto.nome}</Text>
+        <Image style={styles.imagem} source={{ uri: produto.imagem }} />
+        <View style={styles.containerForm}>
+          <Text style={styles.textLabel}>Produto:</Text>
+          <TextInput style={styles.input} value={nome} onChangeText={setNome} />
+          <Text style={styles.textLabel}>Imagem:</Text>
+          <TextInput
+            style={styles.input}
+            value={imagem}
+            onChangeText={setImagem}
+          />
+          <Text style={styles.textLabel}>Quantidade:</Text>
+          <TextInput
+            style={styles.input}
+            value={quantidade}
+            onChangeText={setQuantidade}
+            keyboardType="numeric"
+          />
+          <Text style={styles.textLabel}>Valor:</Text>
+          <TextInput
+            style={styles.input}
+            value={valor}
+            onChangeText={setValor}
+            keyboardType="numeric"
+          />
+        </View>
+        <TouchableOpacity style={styles.botaoEnviar} onPress={salvarAlteracoes}>
+          <Text>SALVAR</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
