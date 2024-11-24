@@ -33,6 +33,8 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [tipoPesquisa, setTipoPesquisa] = useState<any>("nome");
 
   const obterDados = async () => {
     setLoading(true);
@@ -88,9 +90,19 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
     return unsubscribe;
   }, [navigation]);
 
+
+  const produtosFiltrados = produtos.filter((produto) =>  {
+    if(tipoPesquisa === "nome") {
+      return produto.nome.toLowerCase().includes(searchText.toLowerCase());
+    } else if (tipoPesquisa === "valor") {
+      return produto.valor.toString().includes(searchText);
+    }
+    return true;
+  });
+
   return (
     <>
-      <Filtro />
+      <Filtro tipoPesquisa={tipoPesquisa} setTipoPesquisa={setTipoPesquisa} setSearchText={setSearchText} />
       <Text style={styles.titulo}>PRODUTOS</Text>
       <View style={styles.container}>
         {loading ? (
@@ -101,7 +113,8 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
           </View>
         ) : (
           <FlatList
-            data={produtos}
+            data={produtosFiltrados}
+            // data={produtos}
             renderItem={({ item }) => (
               <CardProduto
                 id={item.id}

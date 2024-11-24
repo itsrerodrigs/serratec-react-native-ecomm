@@ -1,7 +1,18 @@
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 
-export const Filtro = () => {
+type FiltroProps = {
+  setSearchText(texto: string): void,
+  setTipoPesquisa(texto: string): void,
+  tipoPesquisa: string
+}
+
+export const Filtro = ({ setSearchText, setTipoPesquisa, tipoPesquisa }: FiltroProps) => {
+
+  const mudarTipoPesquisa = () => {
+    setTipoPesquisa(tipoPesquisa === "nome" ? "valor" : "nome");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.searchSection}>
@@ -15,8 +26,17 @@ export const Filtro = () => {
           style={styles.input}
           placeholder="Pesquisar..."
           placeholderTextColor="#bdd4cf"
+          onChangeText={setSearchText}
+          keyboardType={"default"}
         />
       </View>
+
+      <TouchableOpacity
+        onPress={mudarTipoPesquisa}
+        style={styles.filterIcon}>
+        <Feather name="filter" size={24} color="#43d3aa" />
+        <Text style={styles.filterText}>Mudar: por {tipoPesquisa === "nome" ? "valor" : "nome"}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -25,7 +45,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-end",
     padding: 20,
   },
   searchSection: {
@@ -43,6 +63,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   input: {
+    width: "100%",
     height: 40,
     margin: 12,
     marginLeft: 0,
@@ -52,4 +73,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#bdd4cf",
   },
+  filterIcon: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 6,
+  },
+  filterText: {
+    marginLeft: 4,
+    color: "#43d3aa",
+    fontSize: 16,
+  }
 });
