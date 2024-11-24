@@ -1,51 +1,91 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
   TextInput,
-  Button,
   StyleSheet,
-  Image,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from "react-native";
+import { ImagePickerComponent } from "../../components/ImagePickerComponent/ImagePickerComponent";
+import { api1 } from "../../services/api";
 import { useAuth } from "../../context/auth";
 
 export const Perfil = () => {
-  const { signOut } = useAuth();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
+  const { user } = useAuth();
 
-  const handleSave = () => {
-    console.log({ nome, email });
-    alert("Perfil atualizado com sucesso!");
-  };
-
-  const handleChangePassword = () => {
-    if (novaSenha !== confirmarSenha) {
-      Alert.alert("Erro", "As senhas não correspondem!");
-    } else {
-      console.log({ novaSenha });
-      alert("Senha alterada com sucesso!");
+  const handleSave = async () => { 
+    try {
+      if (nome !== user.nome || email !== user.email) {
+        await api1.put(`/usuarios/${user.id}`, {
+          nome: nome, 
+          email: email,
+        });
+        alert("Perfil atualizado com sucesso!");
+      } else {
+        alert("Não há dados novos para alterar.")
+      }
+    } catch (err) {
+      console.error('Erro ao atualizar:', err);
+      alert("Erro ao atualizar perfil. Tente novamente mais tarde.");
     }
   };
 
+  const handleChangePassword = async () => {
+    if (novaSenha.trim() === "") {
+      Alert.alert("Erro", "A nova senha não pode ser vazia!");
+    } else if (novaSenha !== confirmarSenha) {
+      Alert.alert("Erro", "As senhas não correspondem!");
+    } else {
+      try {
+        await api1.put(`/usuarios/${user.id}`, {
+          senha: novaSenha,
+        });
+        alert("Senha alterada com sucesso!");
+      } catch (err) {
+        console.error('Erro ao tentar atualizar a senha: ', err);
+        alert("Erro ao alterar a senha. Tente novamente mais tarde.");
+      }
+    }
+  };
+  
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      
+      if (!user || !user.id) {
+        console.error("User ID is not set");
+        return;
+      }
+
+      try {
+        const response = await api1.get(`/usuarios/${user.id}`);
+        const data = response.data;
+        setNome(data.nome);
+        setEmail(data.email);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (user && user.id) {
+      fetchUserData();
+    }
+  }, []);
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      
       <View style={styles.salvarButtonContainer}>
-        <TouchableOpacity onPress={handleSave} style={styles.salvarButton}>
-          <Text style={styles.salvarButtonText}>SALVAR</Text>
-        </TouchableOpacity>
+        
       </View>
       <View style={styles.profileImageContainer}>
-        <TouchableOpacity onPress={() => console.log("Profile image pressed")}>
-          <Image
-            source={{ uri: "https://via.placeholder.com/150" }}
-            style={styles.profileImage}
-          />
-        </TouchableOpacity>
+        <ImagePickerComponent/>
       </View>
       <TextInput
         placeholderTextColor={"#bdd4cf"}
@@ -61,6 +101,9 @@ export const Perfil = () => {
         onChangeText={setEmail}
         style={styles.input}
       />
+      <TouchableOpacity onPress={handleSave} style={styles.button}>
+          <Text style={styles.salvarButtonText}>SALVAR</Text>
+        </TouchableOpacity>
       <Text style={styles.changePasswordText}>Deseja alterar senha?</Text>
       <TextInput
         placeholderTextColor={"#bdd4cf"}
@@ -81,12 +124,13 @@ export const Perfil = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={handleChangePassword}
-          style={styles.buttonSenha}
+          style={styles.button}
         >
           <Text style={styles.salvarButtonText}>ALTERAR SENHA</Text>
         </TouchableOpacity>
       </View>
-    </View>
+      
+    </ScrollView>
   );
 };
 
@@ -101,21 +145,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     marginBottom: 20,
   },
-  salvarButton: {
-    width: "25%",
-    height: 50,
-    backgroundColor: "#bdd3ce",
-    borderColor: "#43d3aa",
-    borderWidth: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 5,
-  },
   salvarButtonText: {
     color: "#114552",
     fontSize: 16,
   },
   profileImageContainer: {
+    width: "100%",
     alignItems: "center",
     marginVertical: 20,
   },
@@ -135,14 +170,14 @@ const styles = StyleSheet.create({
   changePasswordText: {
     fontSize: 14,
     color: "#bdd4cf",
-    marginBottom: 8,
+    marginVertical: 8,
     textAlign: "center",
   },
   buttonContainer: {
     marginTop: 20,
     marginBottom: 20,
   },
-  buttonSenha: {
+  button: {
     width: "100%",
     height: 50,
     backgroundColor: "#bdd3ce",

@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, FlatList } from "react-native";
-import { useAuth } from "../../context/auth";
+import { FlatList } from "react-native";
 import { DetalhesProps, StackNavigation } from "../../routes/app.routes";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { CardDetalhes } from "../../components/CardDetalhes/CardDetalhes";
