@@ -19,19 +19,19 @@ export const Perfil = () => {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const { user } = useAuth();
 
-  const handleSave = async () => { 
+  const handleSave = async () => {
     try {
       if (nome !== user.nome || email !== user.email) {
         await api1.put(`/usuarios/${user.id}`, {
-          nome: nome, 
+          nome: nome,
           email: email,
         });
         alert("Perfil atualizado com sucesso!");
       } else {
-        alert("Não há dados novos para alterar.")
+        alert("Não há dados novos para alterar.");
       }
     } catch (err) {
-      console.error('Erro ao atualizar:', err);
+      console.error("Erro ao atualizar:", err);
       alert("Erro ao atualizar perfil. Tente novamente mais tarde.");
     }
   };
@@ -48,16 +48,14 @@ export const Perfil = () => {
         });
         alert("Senha alterada com sucesso!");
       } catch (err) {
-        console.error('Erro ao tentar atualizar a senha: ', err);
+        console.error("Erro ao tentar atualizar a senha: ", err);
         alert("Erro ao alterar a senha. Tente novamente mais tarde.");
       }
     }
   };
-  
 
   useEffect(() => {
     const fetchUserData = async () => {
-      
       if (!user || !user.id) {
         console.error("User ID is not set");
         return;
@@ -69,7 +67,7 @@ export const Perfil = () => {
         setNome(data.nome);
         setEmail(data.email);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
 
@@ -80,12 +78,9 @@ export const Perfil = () => {
 
   return (
     <ScrollView style={styles.container}>
-      
-      <View style={styles.salvarButtonContainer}>
-        
-      </View>
+      <View style={styles.salvarButtonContainer}></View>
       <View style={styles.profileImageContainer}>
-        <ImagePickerComponent/>
+        <ImagePickerComponent />
       </View>
       <TextInput
         placeholderTextColor={"#bdd4cf"}
@@ -102,8 +97,8 @@ export const Perfil = () => {
         style={styles.input}
       />
       <TouchableOpacity onPress={handleSave} style={styles.button}>
-          <Text style={styles.salvarButtonText}>SALVAR</Text>
-        </TouchableOpacity>
+        <Text style={styles.salvarButtonText}>SALVAR</Text>
+      </TouchableOpacity>
       <Text style={styles.changePasswordText}>Deseja alterar senha?</Text>
       <TextInput
         placeholderTextColor={"#bdd4cf"}
@@ -122,14 +117,10 @@ export const Perfil = () => {
         style={styles.input}
       />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={handleChangePassword}
-          style={styles.button}
-        >
+        <TouchableOpacity onPress={handleChangePassword} style={styles.button}>
           <Text style={styles.salvarButtonText}>ALTERAR SENHA</Text>
         </TouchableOpacity>
       </View>
-      
     </ScrollView>
   );
 };
