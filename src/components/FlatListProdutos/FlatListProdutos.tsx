@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   container: {
-    marginBottom: 60,
+    flex: 1,
     width: "100%",
   },
   separator: {

@@ -15,14 +15,14 @@ export const Home = ({ navigation }: HomeScreenProps) => {
   return (
     <>
       <View style={styles.container}>
-        <View style={styles.containerMenu}>
+        {/* <View style={styles.containerMenu}>
           <TouchableOpacity
             style={styles.botaoCadastrar}
             onPress={() => navigation.navigate("CadastroProduto")}
           >
             <Text style={styles.textBotaoCadastrar}>NOVO PRODUTO</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <FlatListProdutos navigation={navigation} />
       </View>
