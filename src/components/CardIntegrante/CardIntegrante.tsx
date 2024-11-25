@@ -1,21 +1,31 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 
 type CardIntegranteProps = {
     name: string;
     image: string;
     position: string;
     description: string;
+    linkedin: string; 
+    github: string;
+    onPress: () => void;
 };
 
-export const CardIntegrante: React.FC<CardIntegranteProps> = ({ name, image, position, description }) => {
+export const CardIntegrante: React.FC<CardIntegranteProps> = ({ 
+    name, image, position, description, linkedin, github, onPress }) => {
     return (
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={onPress}>
             <Image source={{ uri: image }} style={styles.image} />
-            <Text style={styles.name}>{name}</Text>
-            <Text style={styles.position}>{position}</Text>
-            <Text style={styles.description}>{description}</Text>
-        </View>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.position}>{position}</Text>
+                <Text style={styles.description}>{description}</Text>
+            <View style={styles.iconContainer}>
+                <TouchableOpacity onPress={() => Linking.openURL(linkedin)}>
+            </TouchableOpacity> 
+                <TouchableOpacity onPress={() => Linking.openURL(github)}>
+            </TouchableOpacity>
+        </View> 
+    </TouchableOpacity>
     );
 };
 
@@ -50,4 +60,9 @@ const styles = StyleSheet.create({
         color: '#777',
         textAlign: 'center',
     },
+    iconContainer: { 
+        flexDirection: 'row', 
+        justifyContent: 'center', 
+        marginTop: 10,
+      },
 });
