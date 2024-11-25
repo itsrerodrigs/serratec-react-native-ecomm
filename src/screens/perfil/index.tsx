@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   salvarButtonText: {
     color: "#114552",
-    fontSize: 16,
+    fontSize: 15,
   },
   profileImageContainer: {
     width: "100%",
@@ -157,12 +157,14 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingHorizontal: 8,
     color: "#bdd4cf",
+    borderRadius: 10,
   },
   changePasswordText: {
     fontSize: 14,
     color: "#bdd4cf",
     marginVertical: 8,
     textAlign: "center",
+    borderRadius: 10,
   },
   buttonContainer: {
     marginTop: 20,
@@ -176,6 +178,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 10,
   },
 });

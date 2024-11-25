@@ -141,12 +141,13 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
 
 const styles = StyleSheet.create({
   titulo: {
-    fontSize: 26,
+    fontSize: 24,
     textAlign: "center",
     fontWeight: "600",
     color: "#bdd4cf",
     padding: 20,
     marginBottom: 10,
+    borderRadius: 8,
   },
   container: {
     flex: 1,
