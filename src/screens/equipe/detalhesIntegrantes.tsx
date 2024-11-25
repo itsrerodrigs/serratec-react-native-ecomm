@@ -14,7 +14,7 @@ export type Props = {
 };
 
 export const DetalhesIntegrantes: React.FC<Props> = ({ route }) => {
-  const { name, role, description, image, linkedin, github } = route.params;
+  const { name, role, description, image, linkedin, github} = route.params;
 
 
   const openLink = (url: string) => {
@@ -29,7 +29,9 @@ export const DetalhesIntegrantes: React.FC<Props> = ({ route }) => {
       <Text style={styles.description}>{description}</Text>
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={() => openLink(linkedin)} />
+        <Ionicons name="logo-linkedin" size={30} color="black" />
         <TouchableOpacity onPress={() => openLink(github)} />
+        <Ionicons name="logo-github" size={30} color="black" />
       </View>
     </View>
   );
