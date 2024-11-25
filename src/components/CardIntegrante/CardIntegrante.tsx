@@ -30,10 +30,16 @@ export const CardIntegrante: React.FC<CardIntegranteProps> = ({
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 20,
+        backgroundColor: '#f5f5f5'
+    },    
     card: {
         backgroundColor: '#d8d8d8',
         borderRadius: 10,
-        padding: 50,
+        padding: 20,
         marginVertical: 8,
         alignItems: 'center',
         elevation: 2,
@@ -48,6 +54,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 4,
+        color: "#114552"
     },
     position: {
         fontSize: 15,
@@ -59,6 +66,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#777',
         textAlign: 'center',
+        marginBottom: 10,
     },
     iconContainer: { 
         flexDirection: 'row', 
