@@ -103,8 +103,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
   return (
     <>
       <Filtro tipoPesquisa={tipoPesquisa} setTipoPesquisa={setTipoPesquisa} setSearchText={setSearchText} />
-      <Text style={styles.titulo}>PRODUTOS</Text>
-      <View style={styles.container}>
+           <View style={styles.container}>
         {loading ? (
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -140,23 +139,24 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
 };
 
 const styles = StyleSheet.create({
-  titulo: {
-    fontSize: 26,
+  /*titulo: {
+    fontSize: 24,
     textAlign: "center",
     fontWeight: "600",
     color: "#bdd4cf",
     padding: 20,
     marginBottom: 10,
-  },
+    borderRadius: 8,
+  },*/
   container: {
     flex: 1,
     width: "100%",
   },
-  separator: {
+  /*separator: {
     height: 2,
     backgroundColor: "#bdd3ce",
     marginHorizontal: 10,
-  },
+  },*/
   flatListContent: {
     paddingBottom: 150,
   },
