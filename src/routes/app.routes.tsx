@@ -1,5 +1,8 @@
+// app.routes.tsx
+import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
 import { Home } from "../screens/home";
 import { Detalhes } from "../screens/detalhes";
@@ -7,9 +10,8 @@ import { CadastroProduto } from "../screens/cadastroProduto";
 import { Perfil } from "../screens/perfil";
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 import { useAuth } from "../context/auth";
-import { Integrantes }  from "../screens/equipe/index";
+import { Integrantes } from "../screens/equipe/index";
 import { DetalhesIntegrantes } from "../screens/equipe/detalhesIntegrantes";
-
 
 export type StackNavigation = {
     HomeStack: undefined,
@@ -18,12 +20,12 @@ export type StackNavigation = {
     Perfil: undefined,
     Integrantes: undefined;
     DetalhesIntegrantes: {
-      name: string;
-      role: string;
-      description: string;
-      image: string;
-      github: string;
-      linkedin: string;
+        name: string;
+        role: string;
+        description: string;
+        image: string;
+        github: string;
+        linkedin: string;
     };
 };
 
@@ -37,6 +39,7 @@ export type DetalhesIntegrantesProps = NativeStackNavigationProp<StackNavigation
 
 const { Navigator, Screen } = createNativeStackNavigator<StackNavigation>();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function HomeStack() {
     return (
@@ -46,6 +49,7 @@ function HomeStack() {
                 component={Home}
                 options={{
                     title: 'Home',
+                    headerShown: false
                 }}
             />
             <Screen
@@ -73,6 +77,15 @@ function HomeStack() {
                 })}
             />
         </Navigator>
+    );
+}
+
+function DrawerRoutes() {
+    return (
+        <Drawer.Navigator initialRouteName="Produtos">
+            <Drawer.Screen name="Produtos" component={HomeStack} />
+            <Drawer.Screen name="Cadastrar Produto" component={CadastroProduto} />
+        </Drawer.Navigator>
     );
 }
 
@@ -104,7 +117,7 @@ export const AppRoutes = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={HomeStack}
+                component={DrawerRoutes}
                 options={{
                     headerShown: false,
                 }}
@@ -116,10 +129,10 @@ export const AppRoutes = () => {
             />
             
             <Tab.Screen 
-            name="Integrantes"
-            component={Integrantes}
-            options={{ 
-                title: 'Equipe', 
+                name="Integrantes"
+                component={Integrantes}
+                options={{ 
+                    title: 'Equipe', 
                 }}
             />
 
