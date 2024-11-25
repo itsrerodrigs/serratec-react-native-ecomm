@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         padding: 20,
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#114552'
     },    
     card: {
-        backgroundColor: '#d8d8d8',
+        backgroundColor: '#bdd4cf',
         borderRadius: 10,
         padding: 20,
         marginVertical: 8,
@@ -54,17 +54,17 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 4,
-        color: "#114552"
+        color: "#1e6458"
     },
     position: {
         fontSize: 15,
-        color: '#555',
+        color: '#20788a',
         marginBottom: 8,
         fontStyle: 'italic',
     },
     description: {
         fontSize: 14,
-        color: '#777',
+        color: '#56625d',
         textAlign: 'center',
         marginBottom: 10,
     },

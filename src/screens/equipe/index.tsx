@@ -54,12 +54,12 @@ export const Integrantes: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
-    paddingTop: 20,
+    backgroundColor: "#114552",
+    paddingTop: 8,
   },
   list: {
     padding: 16,
-    backgroundColor: "#ffffff",
+    backgroundColor: "##114552",
     marginTop: 10,
     borderRadius: 10,
   },
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 12,
     marginBottom: 15,
-    backgroundColor: "#ffffff",
+    backgroundColor: "##114552",
     borderRadius: 8,
     elevation: 5, 
     shadowColor: "#000", 
