@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
   nome: {
     fontSize: 26,
     fontWeight: 900,
+    color: "#bdd4cf"
   },
   imagem: {
     width: 300,

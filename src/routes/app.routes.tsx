@@ -58,7 +58,7 @@ const Drawer = createDrawerNavigator();
 
 function HomeStack() {
   return (
-    <Navigator initialRouteName="HomeStack">
+    <Navigator initialRouteName="HomeStack" screenOptions={{headerTintColor: "#114552",}}>
       <Screen
         name="HomeStack"
         component={Home}
@@ -113,6 +113,7 @@ function DrawerRoutes() {
         drawerActiveBackgroundColor: "#cb9758",
         drawerActiveTintColor: "#bdd4cf",
         drawerInactiveTintColor: "#114552",
+        headerTintColor: "#114552",
       }}
     >
       <Drawer.Screen name="Produtos" component={HomeStack} />

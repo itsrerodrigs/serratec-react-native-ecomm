@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/auth";
 import {
   ImageBackground,
@@ -40,7 +40,7 @@ export const Login = () => {
       setLoading(false);
     }
   };
-  //style={styles.container}
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
