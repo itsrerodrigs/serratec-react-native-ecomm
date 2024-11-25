@@ -2,8 +2,37 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, Text, SafeAreaView, ActivityIndicator } from 'react-native';
 import { CardIntegrante } from '../CardIntegrante/CardIntegrante';
 
+interface Integrante {
+    id: number;
+    name: string;
+    image: string;
+    position: string;
+    description: string;
+    linkedin: string;
+    github: string;
+  }
 
-export const FlatListIntegrantes = () => {
+interface FlatListIntegrantesProps {
+    data: Integrante [];
+    onPressItem: (item: Integrante) => void;
+}
+
+export const FlatListIntegrantes: React.FC<FlatListIntegrantesProps> = ({
+    data, onPressItem }) => {
+        const renderItem = ({ item }: {item: Integrante}) => (
+            <CardIntegrante
+            name={item.name}
+            image={item.image}
+            position={item.position}
+            description={item.description}
+            linkedin={item.linkedin}
+            github={item.github}
+            onPress={() => onPressItem(item)}
+            />
+        )
+
+
+        /*
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -39,13 +68,13 @@ export const FlatListIntegrantes = () => {
                 <Text>Carregando...</Text>
             </SafeAreaView>
         );
-    }
+    }*/
 
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={users}
-                keyExtractor={(item) => item.id}
+                data={data}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={renderItem}
                 contentContainerStyle={styles.listContent}
             />
