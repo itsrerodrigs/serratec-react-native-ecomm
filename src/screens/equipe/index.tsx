@@ -21,7 +21,6 @@ export const Integrantes: React.FC = () => {
         } 
         const data = await response.json(); 
         setIntegrantes(data); 
-        console.log("Dados recebidos:", data); 
       } catch (error) { 
         console.error("Erro ao buscar integrantes:", error); 
       } 
