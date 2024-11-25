@@ -1,5 +1,5 @@
-# 📱 Gerenciamento de E-commerce - Serratec Dev FullStack 🛒
-
+# 📱 Gerenciamento de E-commerce - QG Geek 🛒
+![Logo](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/main/assets/logo.png?raw=true)
 Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do curso de **Desenvolvimento FullStack** no **Serratec**. O trabalho foi proposto pelo professor **João Felipe** e entregue no dia **25/11/2024**. Criamos um **aplicativo completo em React Native** focado na visão do funcionário, com funcionalidades de gestão de produtos, vendas e usuários. 🚀
 
 ---
