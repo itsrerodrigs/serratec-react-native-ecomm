@@ -9,9 +9,11 @@ Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do
 
 ### Exemplo:
 ![Página de Login](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Login.jpg?raw=true)
+
 *Página inicial do aplicativo com validação de login.*
 
 ![Página de Produtos](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/ProdutosAT.jpg?raw=true)
+
 *Exibição da lista de produtos com filtros aplicados.*
 
 ---
