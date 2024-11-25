@@ -7,12 +7,24 @@ import { CadastroProduto } from "../screens/cadastroProduto";
 import { Perfil } from "../screens/perfil";
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 import { useAuth } from "../context/auth";
+import { Integrantes }  from "../screens/equipe/index";
+import { DetalhesIntegrantes } from "../screens/equipe/detalhesIntegrantes";
+
 
 export type StackNavigation = {
     HomeStack: undefined,
     Detalhes: { id: string, nome: string },
     CadastroProduto: undefined,
     Perfil: undefined,
+    Integrantes: undefined;
+    DetalhesIntegrantes: {
+      name: string;
+      role: string;
+      description: string;
+      image: string;
+      github: string;
+      linkedin: string;
+    };
 };
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>;
@@ -20,6 +32,8 @@ export type HomeProps = NativeStackNavigationProp<StackNavigation, "HomeStack">;
 export type DetalhesProps = NativeStackNavigationProp<StackNavigation, "Detalhes">;
 export type CadastroProdutoProps = NativeStackNavigationProp<StackNavigation, "CadastroProduto">;
 export type PerfilProps = NativeStackNavigationProp<StackNavigation, "Perfil">;
+export type IntegrantesProps = NativeStackNavigationProp<StackNavigation, "Integrantes">;
+export type DetalhesIntegrantesProps = NativeStackNavigationProp<StackNavigation, "DetalhesIntegrantes">;
 
 const { Navigator, Screen } = createNativeStackNavigator<StackNavigation>();
 const Tab = createBottomTabNavigator();
@@ -44,6 +58,20 @@ function HomeStack() {
                 component={CadastroProduto}
                 options={{ title: 'Cadastrar Produto' }}
             />
+            <Screen
+                name="Integrantes"
+                component={Integrantes}
+                options={{
+                    title: "Equipe",
+                }}
+            />
+            <Screen
+                name="DetalhesIntegrantes" 
+                component={DetalhesIntegrantes}
+                options={({ route }) => ({ 
+                    title: `Detalhes de ${route.params.name}` 
+                })}
+            />
         </Navigator>
     );
 }
@@ -62,6 +90,8 @@ export const AppRoutes = () => {
                         iconName = 'home';
                     } else if (route.name === 'Perfil') {
                         iconName = 'person';
+                    } else if (route.name === 'Integrantes') {
+                        iconName = 'people';
                     } else if (route.name === 'Logout') {
                         iconName = 'exit';
                     }
@@ -83,6 +113,14 @@ export const AppRoutes = () => {
             <Tab.Screen
                 name="Perfil"
                 component={Perfil}
+            />
+            
+            <Tab.Screen 
+            name="Integrantes"
+            component={Integrantes}
+            options={{ 
+                title: 'Equipe', 
+                }}
             />
 
             <Tab.Screen
