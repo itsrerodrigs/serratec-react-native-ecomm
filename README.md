@@ -5,7 +5,7 @@ Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do
 ---
 
 ## 📸 **Capturas de Tela**
-> Adicione aqui imagens do seu aplicativo, como o login, lista de produtos, e splash screen.
+> Imagens do Login e lista de produtos.
 
 ### Exemplo:
 ![Página de Login](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Login.jpg?raw=true)
