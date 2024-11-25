@@ -1,6 +1,8 @@
 # 📱 Gerenciamento de E-commerce - QG Geek 🛒
-<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/main/assets/logo.png?raw=true" alt="projeto finalizado" width="300" />
+
 Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do curso de **Desenvolvimento FullStack** no **Serratec**. O trabalho foi proposto pelo professor **João Felipe** e entregue no dia **25/11/2024**. Criamos um **aplicativo completo em React Native** focado na visão do funcionário, com funcionalidades de gestão de produtos, vendas e usuários. 🚀
+
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/main/assets/logo.png?raw=true" alt="projeto finalizado" width="300" />
 
 ---
 
@@ -96,13 +98,14 @@ Criamos um layout **simples e moderno**, garantindo **usabilidade** e **navegaç
 ---
 
 ## 👥 **Integrantes do Projeto**
-- **Renata Rodrigues**[LinkedIn](https://www.linkedin.com/in/rerodrigs/)
-- **Lucas Berlim**[LinkedIn](https://www.linkedin.com/in/lucas-berlim-705136265/)
-- **Michele Moreira**[LinkedIn](https://www.linkedin.com/in/michelemoreira-s/)
-- **Rafael Guberman**[LinkedIn](https://www.linkedin.com/in/rafael-guberman-2486a1ba/)
-- **Eduarda Pinho**[LinkedIn](https://www.linkedin.com/in/eduarda-pinho-064b44330/)
-- **Rômulo Lourenço**[LinkedIn]()
-- **Renan Ferreira**[LinkedIn](https://www.linkedin.com/in/renan-ferreira-5714412a6/)
+- [Eduarda Pinho](https://www.linkedin.com/in/eduarda-pinho-064b44330/) <a href="https://github.com/EduardaPinh0" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+- [Lucas Berlim](https://www.linkedin.com/in/lucas-berlim-705136265/) <a href="https://github.com/LucasBerlim" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+- [Michele Moreira](https://www.linkedin.com/in/michelemoreira-s/) <a href="https://github.com/eumichelems" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+- [Rafael Guberman](https://www.linkedin.com/in/rafael-guberman-2486a1ba/) <a href="https://github.com/Rafaeltyf" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+- [Renan Ferreira](https://www.linkedin.com/in/renan-ferreira-5714412a6/) <a href="https://github.com/renanferreira" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+- [Renata Rodrigues](https://www.linkedin.com/in/rerodrigs/) <a href="https://github.com/itsrerodrigs" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+- [Romulo Lourenço]() <a href="https://github.com/romulolourenco" target="_blank"> <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub"/> </a>
+
 
 ---
 
