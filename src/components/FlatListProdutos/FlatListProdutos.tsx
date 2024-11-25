@@ -2,7 +2,6 @@ import {
   FlatList,
   View,
   StyleSheet,
-  Text,
   ActivityIndicator,
   Alert,
   RefreshControl,
@@ -26,7 +25,7 @@ type FlatListProdutosProps = {
 };
 
 const ItemSeparator = () => {
-  return <View style={styles.separator} />;
+  return <View />;
 };
 
 export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
@@ -103,8 +102,7 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
   return (
     <>
       <Filtro tipoPesquisa={tipoPesquisa} setTipoPesquisa={setTipoPesquisa} setSearchText={setSearchText} />
-      <Text style={styles.titulo}>PRODUTOS</Text>
-      <View style={styles.container}>
+           <View style={styles.container}>
         {loading ? (
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -114,7 +112,6 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
         ) : (
           <FlatList
             data={produtosFiltrados}
-            // data={produtos}
             renderItem={({ item }) => (
               <CardProduto
                 id={item.id}
@@ -140,22 +137,9 @@ export const FlatListProdutos = ({ navigation }: FlatListProdutosProps) => {
 };
 
 const styles = StyleSheet.create({
-  titulo: {
-    fontSize: 26,
-    textAlign: "center",
-    fontWeight: "600",
-    color: "#bdd4cf",
-    padding: 20,
-    marginBottom: 10,
-  },
   container: {
     flex: 1,
     width: "100%",
-  },
-  separator: {
-    height: 2,
-    backgroundColor: "#bdd3ce",
-    marginHorizontal: 10,
   },
   flatListContent: {
     paddingBottom: 150,

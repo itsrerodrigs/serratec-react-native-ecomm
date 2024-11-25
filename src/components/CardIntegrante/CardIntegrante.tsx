@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 type CardIntegranteProps = {
     name: string;
@@ -8,24 +9,28 @@ type CardIntegranteProps = {
     description: string;
     linkedin: string; 
     github: string;
-    onPress: () => void;
+    iconLinkedIn: string; 
+    iconGitHub: string;
 };
 
 export const CardIntegrante: React.FC<CardIntegranteProps> = ({ 
-    name, image, position, description, linkedin, github, onPress }) => {
+    name, image, position, description, linkedin, github, iconLinkedIn, iconGitHub}) => {
     return (
-        <TouchableOpacity style={styles.card} onPress={onPress}>
+        <View style={styles.card}>
             <Image source={{ uri: image }} style={styles.image} />
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.position}>{position}</Text>
                 <Text style={styles.description}>{description}</Text>
             <View style={styles.iconContainer}>
-                <TouchableOpacity onPress={() => Linking.openURL(linkedin)}>
-            </TouchableOpacity> 
-                <TouchableOpacity onPress={() => Linking.openURL(github)}>
-            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL(linkedin)} style={styles.iconButton}>
+                <Ionicons name="logo-linkedin" size={24} color="#114552" />
+                </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL(github)} style={styles.iconButton}>
+                <Ionicons name="logo-github" size={24} color="#114552" />
+                </TouchableOpacity>
+            
         </View> 
-    </TouchableOpacity>
+    </View>
     );
 };
 
@@ -73,4 +78,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center', 
         marginTop: 10,
       },
+      iconButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 8,
+    },
 });

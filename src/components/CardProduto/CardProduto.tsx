@@ -42,10 +42,10 @@ export const CardProduto = ({
             navigation.navigate("Detalhes", { id: id, nome: nome })
           }
         >
-          <FontAwesome6 name="edit" size={24} color="#43d3aa" />
+          <FontAwesome6 name="edit" size={22} color="#1e6458" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.ButtonIcon} onPress={onPress}>
-          <FontAwesome6 name="trash-can" size={24} color="#43d3aa" />
+          <FontAwesome6 name="trash-can" size={22} color="#1e6458" />
         </TouchableOpacity>
       </View>
     </View>
@@ -54,11 +54,15 @@ export const CardProduto = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: "95%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 10,
+    padding: 2,
+    backgroundColor: "#bdd4cf",
+    borderRadius: 10,
+    margin: 6,
+    opacity: 0.9,
   },
   containerImagem: {
     width: 120,
@@ -85,12 +89,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   nome: {
-    color: "#bdd4cf",
+    color: "#114552",
     fontWeight: "500",
     fontSize: 18,
   },
   quantidade: {
-    color: "#bdd4cf",
+    color: "#114552",
     fontWeight: "500",
     fontSize: 16,
   },

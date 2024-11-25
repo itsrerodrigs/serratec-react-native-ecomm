@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackNavigation } from "../../routes/app.routes";
 import { FlatListIntegrantes } from '../../components/FlatListIntegrantes/FlatListIntegrantes'; 
-import { CardIntegrante } from "../../components/CardIntegrante/CardIntegrante";
-
 export type IntegrantesScreenNavigationProp = NativeStackNavigationProp<StackNavigation, 'Integrantes'>;
 
 export const Integrantes: React.FC = () => {
-  const [integrantes, setIntegrantes] = useState([]);
-  const navigation = useNavigation<IntegrantesScreenNavigationProp>(); 
+  const [integrantes, setIntegrantes] = useState([]); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => { 
+    setLoading(true);
     const fetchIntegrantes = async () => { 
       try { 
         const response = await fetch("https://67439dd4b7464b1c2a6560d6.mockapi.io/team/team"); 
@@ -24,28 +22,26 @@ export const Integrantes: React.FC = () => {
       } catch (error) { 
         console.error("Erro ao buscar integrantes:", error); 
       } 
+      setLoading(false);
     }; 
-    
     fetchIntegrantes();
+    
   }, []);
 
-  const handlePressItem = (item: any) => {
-    navigation.navigate("DetalhesIntegrantes", {
-      name: item.name,
-      role: item.position,
-      description: item.description,
-      image: item.image,
-      linkedin: item.linkedin,
-      github: item.github,
-    });
-  };
-
   return (
+
+    
     <View style={styles.container}>
-      <FlatListIntegrantes
-        data={integrantes} 
-        onPressItem={handlePressItem}
-      />
+
+      {loading ? (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" />
+        </View>
+        ) : (
+      <FlatListIntegrantes data={integrantes} />
+        )}
     </View>
   );
 };

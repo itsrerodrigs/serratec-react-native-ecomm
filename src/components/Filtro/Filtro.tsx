@@ -1,17 +1,26 @@
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 
 type FiltroProps = {
-  setSearchText(texto: string): void,
-  setTipoPesquisa(texto: string): void,
-  tipoPesquisa: string
-}
+  setSearchText(texto: string): void;
+  setTipoPesquisa(texto: string): void;
+  tipoPesquisa: string;
+};
 
-export const Filtro = ({ setSearchText, setTipoPesquisa, tipoPesquisa }: FiltroProps) => {
-
+export const Filtro = ({
+  setSearchText,
+  setTipoPesquisa,
+  tipoPesquisa,
+}: FiltroProps) => {
   const mudarTipoPesquisa = () => {
     setTipoPesquisa(tipoPesquisa === "nome" ? "valor" : "nome");
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -31,11 +40,11 @@ export const Filtro = ({ setSearchText, setTipoPesquisa, tipoPesquisa }: FiltroP
         />
       </View>
 
-      <TouchableOpacity
-        onPress={mudarTipoPesquisa}
-        style={styles.filterIcon}>
-        <Feather name="filter" size={24} color="#43d3aa" />
-        <Text style={styles.filterText}>Mudar: por {tipoPesquisa === "nome" ? "valor" : "nome"}</Text>
+      <TouchableOpacity onPress={mudarTipoPesquisa} style={styles.filterIcon}>
+        <Feather name="filter" size={20} color="#43d3aa" />
+        <Text style={styles.filterText}>
+          Filtro: {tipoPesquisa === "nome" ? "valor" : "nome"}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -82,5 +91,5 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     color: "#43d3aa",
     fontSize: 16,
-  }
+  },
 });

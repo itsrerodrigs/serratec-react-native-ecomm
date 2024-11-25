@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/auth";
 import {
   ImageBackground,
@@ -40,7 +40,7 @@ export const Login = () => {
       setLoading(false);
     }
   };
-  //style={styles.container}
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -103,7 +103,7 @@ export const Login = () => {
             <TextInput
               autoCapitalize="none"
               maxLength={12}
-              placeholderTextColor={"white"}
+              placeholderTextColor={"#bdd4cf"}
               style={styles.input}
               secureTextEntry={true}
               placeholder="Password"
@@ -157,29 +157,31 @@ const styles = StyleSheet.create({
   input: {
     width: "100%",
     height: 50,
-    borderColor: "#ddd",
+    borderColor: "#43d3aa",
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
-    color: "#fbfbfb",
+    color: "#bdd4cf",
     backgroundColor: "#e7e7e746",
   },
   button: {
     padding: 20,
     width: "100%",
-    backgroundColor: "#e7e7e7",
+    backgroundColor: "#bdd4cf",
+    borderColor: "#43d3aa",
+    borderWidth: 1,
     alignItems: "center",
     borderRadius: 5,
   },
   textButton: {
-    color: "black",
+    color: "#114552",
     fontSize: 16,
     fontWeight: "bold",
   },
   label: {
     flex: 1,
     fontSize: 26,
-    color: "white",
+    color: "#bdd4cf",
     fontWeight: "bold",
   },
 });
