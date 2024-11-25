@@ -1,5 +1,5 @@
 # 📱 Gerenciamento de E-commerce - QG Geek 🛒
-![Logo](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/main/assets/logo.png?raw=true)
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/main/assets/logo.png?raw=true" alt="projeto finalizado" width="300" />
 Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do curso de **Desenvolvimento FullStack** no **Serratec**. O trabalho foi proposto pelo professor **João Felipe** e entregue no dia **25/11/2024**. Criamos um **aplicativo completo em React Native** focado na visão do funcionário, com funcionalidades de gestão de produtos, vendas e usuários. 🚀
 
 ---
@@ -8,11 +8,11 @@ Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do
 > Imagens do Login e lista de produtos.
 
 ### Exemplo:
-![Página de Login](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Login.jpg?raw=true)
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Login.jpg?raw=true" alt="projeto finalizado" width="300"/>
 
 *Página inicial do aplicativo com validação de login.*
 
-![Página de Produtos](https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/ProdutosAT.jpg?raw=true)
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/ProdutosAT.jpg?raw=true" alt="projeto finalizado" width="300"/>
 
 *Exibição da lista de produtos com filtros aplicados.*
 
@@ -53,8 +53,7 @@ Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do
 2. **FlatlistProdutos**: Lista dinâmica para exibição de produtos.
 3. **CardIntegrante**: Exibe as informações de cada integrante do grupo.
 4. **FlatlistIntegrantes**: Lista dinâmica com detalhes dos integrantes.
-5. **Navbar**: Barra de navegação fixa na parte inferior do app.
-6. **Filtro**: Filtros aplicados na lista de produtos.
+5. **Filtro**: Filtros aplicados na lista de produtos.
 
 ---
 
@@ -117,14 +116,20 @@ Criamos um layout **simples e moderno**, garantindo **usabilidade** e **navegaç
    cd PojetoReactNative-G1
 
 3. **Instale as dependências:**
-
    ```bash
-   npm expo install
+   npm install
+   npm install axios
+   npm install @react-navigation/bottom-tabs
+   npx expo install expo-splash-screen
+   npx expo install @react-native-async-storage/async-storage
+   npm install react-hook-form
+   npx expo install expo-image-picker
+   npm install @react-navigation/drawer
 
 4. **Inicie o aplicativo:**
 
    ```bash
-   npm expo start
+   npx expo start
 
 5. **Visualize o aplicativo:**
 
