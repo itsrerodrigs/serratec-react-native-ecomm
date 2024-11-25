@@ -34,8 +34,8 @@ export const Filtro = ({ setSearchText, setTipoPesquisa, tipoPesquisa }: FiltroP
       <TouchableOpacity
         onPress={mudarTipoPesquisa}
         style={styles.filterIcon}>
-        <Feather name="filter" size={24} color="#43d3aa" />
-        <Text style={styles.filterText}>Mudar: por {tipoPesquisa === "nome" ? "valor" : "nome"}</Text>
+        <Feather name="filter" size={20} color="#43d3aa" />
+        <Text style={styles.filterText}>Flitro: {tipoPesquisa === "nome" ? "valor" : "nome"}</Text>
       </TouchableOpacity>
     </View>
   );
