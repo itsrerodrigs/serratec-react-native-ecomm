@@ -12,9 +12,17 @@ Este é o projeto de **Gerenciamento de E-commerce**, desenvolvido como parte do
 
 *Página inicial do aplicativo com validação de login.*
 
-<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/ProdutosAT.jpg?raw=true" alt="projeto finalizado" width="300"/>
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Produtos.jpg?raw=true" alt="projeto finalizado" width="300"/>
 
 *Exibição da lista de produtos com filtros aplicados.*
+
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Drawer.jpeg?raw=true" alt="projeto finalizado" width="300"/>
+
+*Exibição Drawer Navigation.*
+
+<img src="https://github.com/LucasBerlim/PojetoReactNative-G1/blob/desenvolvimento/assets/Equipe.jpeg?raw=true" alt="projeto finalizado" width="300"/>
+
+*Exibição da lista da Equipe.*
 
 ---
 
@@ -101,7 +109,7 @@ Criamos um layout **simples e moderno**, garantindo **usabilidade** e **navegaç
 - **Michele Moreira**[LinkedIn](https://www.linkedin.com/in/michelemoreira-s/)
 - **Rafael Guberman**[LinkedIn](https://www.linkedin.com/in/rafael-guberman-2486a1ba/)
 - **Eduarda Pinho**[LinkedIn](https://www.linkedin.com/in/eduarda-pinho-064b44330/)
-- **Rômulo Lourenço**[LinkedIn]()
+- **Rômulo Lourenço**[LinkedIn](https://www.linkedin.com/in/romulo-louren%C3%A7o-201422219/)
 - **Renan Ferreira**[LinkedIn](https://www.linkedin.com/in/renan-ferreira-5714412a6/)
 
 ---
