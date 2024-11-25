@@ -1,4 +1,3 @@
-// app.routes.tsx
 import React from "react";
 import {
   createNativeStackNavigator,
